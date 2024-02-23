@@ -7,9 +7,9 @@ See the preamble:
 // @name         Auto-Button-Click Double-check Evaluation for Funsies or Gnoses
 // @namespace    http://tampermonkey.net/
 // @version      0.2
-// @description  Clicks the button inside "model-response" whenever it appears unless "fact-check-tooltip" is present.
-// @author       You
-// @match        https://bard.google.com/*
+// @description  Clicks "fact-check-button" whenever it appears unless "factuality-status" is present.
+// @author       danielsgriffin
+// @match        https://gemini.google.com/app/*
 // @grant        none
 // @run-at       document-end
 // ==/UserScript==

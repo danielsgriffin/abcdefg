@@ -2,14 +2,14 @@
 // @name         Auto-Button-Click Double-check Evaluation for Funsies or Gnoses
 // @namespace    http://tampermonkey.net/
 // @version      0.2
-// @description  Clicks the button inside "model-response" whenever it appears unless "fact-check-tooltip" is present.
-// @author       You
-// @match        https://bard.google.com/*
+// @description  Clicks the button inside "fact-check-button" whenever it appears unless "factuality-status" is present.
+// @author       danielsgriffin
+// @match        https://gemini.google.com/app/*
 // @grant        none
 // @run-at       document-end
 // ==/UserScript==
 
-(function() {
+(function () {
     'use strict';
 
     console.log("Script started");
@@ -19,27 +19,48 @@
         console.log(button.getAttribute('aria-label'));
     });
 
+    function showToastNotification() {
+        const toastContainer = document.createElement('div');
+        toastContainer.textContent = "Your 'Auto-Button-Click Double-check Evaluation for Funsies or Gnoses' userscript has clicked the 'Double-check response' button! 🎉";
+        Object.assign(toastContainer.style, {
+            position: 'fixed',
+            top: '20%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            backgroundColor: 'rgb(255, 255, 255)',
+            color: 'rgb(0, 0, 0)',
+            padding: '30px',
+            fontSize: '50px',
+            borderRadius: '10px',
+            zIndex: 1000,
+            boxShadow: 'rgba(0, 0, 0, 0.3) 0px 4px 8px',
+            display: 'block',
+        });
+        document.body.appendChild(toastContainer);
+        toastContainer.style.display = 'block';
+        setTimeout(() => toastContainer.style.display = 'none', 5000);
+    }
+
     const clickButtonIfPresent = () => {
-    const button = document.querySelector('button[aria-label="Double-check response"]');
+        const button = document.querySelector('button[aria-label="Double-check response"]');
         if (button) {
             console.log("Found button, clicking");
 
             clearInterval(initialInterval); // Clear the active interval before clicking the button
             button.click();
 
-            alert("Your 'Auto-Button-Click Double-check Evaluation for Funsies or Gnoses' userscript has clicked the 'Double-check response' button! 🎉"); // Display a popup
+            showToastNotification();
             return; // Exit the function
         } else {
             console.log("Button not found");
         }
     };
 
-
     // Run the function once immediately
     clickButtonIfPresent();
 
-    // Then set it to run every 10 seconds for the first minute
-    let initialInterval = setInterval(clickButtonIfPresent, 10000);
+    // Then set it to run every 1 second for the first minute
+    let initialInterval = setInterval(clickButtonIfPresent, 1000);
 
     setTimeout(() => {
         clearInterval(initialInterval);
