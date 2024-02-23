@@ -20,4 +20,5 @@ See the preamble:
 1. Install Tampermonkey or a similar browser extension. 
 2. Open the raw abcdefg.user.js file https://github.com/danielsgriffin/abcdefg/raw/main/abcdefg.user.js
 3. Tampermonkey will offer to load the userscript.
-Then it will run on its own when using Bard. Tell me if you have any questions/comments!
+
+Then it will run on its own when using Gemini. Tell me if you have any questions/comments!
