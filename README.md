@@ -1,5 +1,11 @@
 # abcdefg (or Auto-Button-Click Double-check Evaluation for Funsies or Gnoses)
 
+This script automatically clicks the first Double-check response button if one appears within one minute of loading a Gemini webpage. It does not currently support switching between conversations, or threaded conversations.
+
+This is with extractFactChecks set to true.
+<img width="835" alt="image" src="https://github.com/danielsgriffin/abcdefg/assets/6070690/2e2e5b39-a3f0-49fa-923c-cacf4bd0caa4">
+
+
 See the preamble:
 
 ```
